@@ -1,0 +1,579 @@
+<html>
+
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap"
+    rel="stylesheet">
+  <style>
+    /* --- Reset & Variables --- */
+    :root {
+      --bg-color: black;
+      /* Темный фон */
+      --card-bg: black;
+      /* Фон карточек */
+      --text-main: #e6edf3;
+      /* Основной текст */
+      --text-muted: #8b949e;
+      /* Цвет при наведении */
+      --border: #30363d;
+      /* Границы */
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    /* --- Layout --- */
+    .container {
+      width: 100%;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* --- Header --- */
+    header {
+      text-align: left;
+      margin-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .role {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--accent);
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .bio {
+      color: var(--text-muted);
+      margin-top: 15px;
+      font-size: 1.1rem;
+    }
+
+    /* --- Sections --- */
+    section {
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    h2 i {
+      font-size: 1.2rem;
+      color: var(--accent);
+    }
+
+    /* --- Tech Stack (Tags) --- */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+
+    .tag:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    /* --- Experience List --- */
+    .experience-item {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+      padding-left: 15px;
+      border-left: 2px solid var(--border);
+    }
+
+    .experience-item:hover {
+      border-left-color: var(--accent);
+    }
+
+    .exp-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+    }
+
+    .exp-title {
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .exp-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .exp-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-top: 5px;
+    }
+
+    /* --- Links & Buttons --- */
+    .button-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 20px;
+      background-color: var(--card-bg);
+      color: var(--text-main);
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      transition: all 0.2s;
+    }
+
+    .btn:hover {
+      background-color: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .btn.primary {
+      background-color: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    .btn.primary:hover {
+      background-color: var(--accent-hover);
+    }
+
+    /* --- Footer --- */
+    footer {
+      margin-top: 60px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+
+    /* Mobile adaptation */
+    @media (max-width: 500px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      .exp-head {
+        flex-direction: column;
+        gap: 5px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div
+      style="width: 100%; padding-bottom: 160px; justify-content: space-between; align-items: flex-start; display: inline-flex">
+      <div
+        style="width: 373px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
+        <div
+          style="color: white; font-size: 24px; font-family: Schibsted Grotesk; font-weight: 600; line-height: 31.20px; word-wrap: break-word">
+          Karina Shpilevskaya,</div>
+        <div
+          style="color: #ABABAB; font-size: 24px; font-family: Schibsted Grotesk; font-weight: 400; line-height: 31.20px; word-wrap: break-word">
+          English tutor</div>
+      </div>
+      <a href="https://www.avito.ru/sankt-peterburg/predlozheniya_uslug/repetitor_po_angliyskomu_yazyku_onlayn_ielts_4355532025"
+        target="_blank"
+        style="color: white; font-size: 24px; font-family: 'Schibsted Grotesk'; font-weight: 600; text-decoration: underline; line-height: 31.20px; display: inline-block;">
+        Book a trial lesson
+      </a>
+    </div>
+    <div style="width: 100%; justify-content: flex-start; align-items: flex-start; gap: 20px; display: inline-flex;">
+      <div
+        style="flex: 1 1 0; padding-right: 10px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
+
+        <div
+          style="align-self: stretch; height: 202px; padding-top: 30px; padding-bottom: 40px; padding-left: 6px; padding-right: 40px; border-top: 1px #383838 solid; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 37px; display: flex">
+          <div
+            style="width: 100%; flex: 1 1 0; color: white; font-size: 16px; font-family: Schibsted Grotesk; font-weight: 400; line-height: 22.40px; word-wrap: break-word;">
+            A Cambridge CELTA-certified tutor with over 5 years of experience, I help students achieve high IELTS scores
+            and support programmers in preparing for technical and HR interviews in English.<br /><br />
+          </div>
+        </div>
+
+        <a href="https://www.avito.ru/sankt-peterburg/predlozheniya_uslug/repetitor_po_angliyskomu_yazyku_onlayn_ielts_4355532025"
+          target="_blank" style="text-decoration:none; display:inline-block; width:358px;"
+          onmouseover="this.firstElementChild.style.background='white'; this.querySelectorAll('div').forEach(el=>el.style.color='black');"
+          onmouseout="this.firstElementChild.style.background='black'; this.querySelectorAll('div').forEach(el=>el.style.color='white');">
+
+          <div
+            style="width:358px; padding:12px 6px; background:black; border-top:0.5px solid #383838; display:inline-flex; align-items:center; gap:1px; transition:all 0.3s ease;">
+            <div
+              style="color:white; font-size:12px; font-family:'Schibsted Grotesk', sans-serif; font-weight:400; line-height:16.9px;">
+              avito</div>
+            <div
+              style="color:white; font-size:12px; font-family:'Schibsted Grotesk', sans-serif; font-weight:600; line-height:12.83px;">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="0" y1="10" x2="10" y2="0"></line>
+                <polyline points="6 0 10 0 10 4"></polyline>
+              </svg>
+            </div>
+          </div>
+
+        </a>
+        <a href="https://www.instagram.com/karinalevski/" target="_blank"
+          style="text-decoration:none; display:inline-block; width:358px;"
+          onmouseover="this.firstElementChild.style.background='white'; this.querySelectorAll('div').forEach(el=>el.style.color='black');"
+          onmouseout="this.firstElementChild.style.background='black'; this.querySelectorAll('div').forEach(el=>el.style.color='white');">
+
+          <div data-state="Default"
+            style="width:358px; padding:12px 6px; background:black; border-top:0.5px solid #383838; display:inline-flex; align-items:center; gap:1px; transition:all 0.3s ease;">
+            <div
+              style="color:white; font-size:12px; font-family:'Schibsted Grotesk', sans-serif; font-weight:400; line-height:15.6px;">
+              instagram
+            </div>
+            <div
+              style="color:white; font-size:12px; font-family:'Schibsted Grotesk', sans-serif; font-weight:600; line-height:12.83px;">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="0" y1="10" x2="10" y2="0"></line>
+                <polyline points="6 0 10 0 10 4"></polyline>
+              </svg>
+            </div>
+          </div>
+
+          <a href="tel:+79110167094" style="text-decoration:none; display:inline-block; width:358px;"
+            onmouseover="this.querySelector('.phone-text').style.color='black'; this.firstElementChild.style.background='white';"
+            onmouseout="this.querySelector('.phone-text').style.color='white'; this.firstElementChild.style.background='black';">
+
+            <div
+              style="width:358px; padding:12px 6px; background:black; border-top:0.5px solid #383838; display:inline-flex; align-items:center; transition:all 0.3s ease;">
+
+              <div class="phone-text"
+                style="color:white; font-size:12px; font-family:'Schibsted Grotesk', sans-serif; font-weight:400; line-height:15.6px;">
+                +79110167094
+              </div>
+
+            </div>
+
+          </a>
+
+
+          <a href="https://www.instagram.com/kl_english_club/" target="_blank"
+            style="text-decoration:none; display:inline-block; width:358px;"
+            onmouseover="this.querySelectorAll('.club-text').forEach(el=>el.style.color='black'); this.firstElementChild.style.background='white';"
+            onmouseout="this.querySelectorAll('.club-text').forEach(el=>el.style.color='white'); this.firstElementChild.style.background='black';">
+
+            <div data-state="Default"
+              style="width:358px; padding:12px 6px; background:black; border-top:0.5px solid #383838; display:inline-flex; align-items:center; gap:1px; transition:all 0.3s ease;">
+
+              <div class="club-text"
+                style="color:white; font-size:12px; font-family:'Schibsted Grotesk', sans-serif; font-weight:400; line-height:15.6px;">
+                our speaking club
+              </div>
+
+              <div class="club-text"
+                style="color:white; font-size:12px; font-family:'Schibsted Grotesk', sans-serif; font-weight:600; line-height:12.83px;">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="0" y1="10" x2="10" y2="0"></line>
+                  <polyline points="6 0 10 0 10 4"></polyline>
+                </svg>
+              </div>
+
+            </div>
+
+          </a>
+
+      </div>
+      <div
+        style="flex: 1 1 0; padding-left: 20px; flex-direction: column; justify-content: center; align-items: flex-start; display: inline-flex">
+        <div
+          style="align-self: stretch; padding-top: 30px; padding-bottom: 80px; border-top: 1px #383838 solid; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 37px; display: flex">
+          <div
+            style="align-self: stretch; color: white; font-size: 12px; font-family: Schibsted Grotesk; font-weight: 600; line-height: 15.60px; word-wrap: break-word">
+            Experience</div>
+          <div
+            style="align-self: stretch; padding-right: 20px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 50px; display: flex">
+            <div
+              style="align-self: stretch; padding-top: 20px; border-top: 0.50px #383838 solid; justify-content: flex-start; align-items: flex-start; gap: 30px; display: inline-flex; flex-wrap: wrap; align-content: flex-start">
+              <div
+                style="min-width: 220px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 12px; display: inline-flex">
+                <div
+                  style="align-self: stretch; color: white; font-size: 15px; font-family: Schibsted Grotesk; font-weight: 600; line-height: 19.50px; word-wrap: break-word">
+                  English Tutor</div>
+                <div
+                  style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 2px; display: flex">
+                  <div
+                    style="align-self: stretch; color: #ABABAB; font-size: 16px; font-family: Schibsted Grotesk; font-weight: 400; text-decoration: none; line-height: 22.40px; word-wrap: break-word">
+                    Avito</div>
+                  <div
+                    style="align-self: stretch; color: #ABABAB; font-size: 16px; font-family: Schibsted Grotesk; font-weight: 400; line-height: 22.40px; word-wrap: break-word">
+                    June 2024 - Present</div>
+                  <div
+                    style="align-self: stretch; color: #ABABAB; font-size: 16px; font-family: Schibsted Grotesk; font-weight: 400; line-height: 22.40px; word-wrap: break-word">
+                    Remote & Bali, Indonesia </div>
+                </div>
+              </div>
+              <div
+                style="color: white; font-size: 16px; font-family: Schibsted Grotesk; font-weight: 400; line-height: 24.80px; word-wrap: break-word">
+                Designed individualized learning plans based on students' goals, including IELTS preparation, career
+                advancement, and relocation.<br />Developed speaking confidence through guided conversation practice,
+                real-life simulations, and targeted pronunciation training.</div>
+            </div>
+            <div
+              style="align-self: stretch; padding-top: 20px; border-top: 0.50px #383838 solid; justify-content: flex-start; align-items: flex-start; gap: 30px; display: inline-flex; flex-wrap: wrap; align-content: flex-start">
+              <div
+                style="min-width: 220px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 12px; display: inline-flex">
+                <div
+                  style="align-self: stretch; color: white; font-size: 16px; font-family: Schibsted Grotesk; font-weight: 600; line-height: 20.80px; word-wrap: break-word">
+                  Web design teacher</div>
+                <div
+                  style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 2px; display: flex">
+                  <div
+                    style="align-self: stretch; color: #ABABAB; font-size: 16px; font-family: Schibsted Grotesk; font-weight: 400; text-decoration: none; line-height: 22.40px; word-wrap: break-word">
+                    RTS school</div>
+                  <div
+                    style="align-self: stretch; color: #ABABAB; font-size: 16px; font-family: Schibsted Grotesk; font-weight: 400; line-height: 22.40px; word-wrap: break-word">
+                    December 2021 - May 2024</div>
+                  <div
+                    style="align-self: stretch; color: #ABABAB; font-size: 16px; font-family: Schibsted Grotesk; font-weight: 400; line-height: 22.40px; word-wrap: break-word">
+                    Remote & SaintP, Russia </div>
+                </div>
+              </div>
+              <div
+                style="min-width: 300px; color: white; font-size: 16px; font-family: Schibsted Grotesk; font-weight: 400; line-height: 24.80px; word-wrap: break-word">
+                Delivered online web design classes in English to children and teenagers across Europe and the USA,
+                adapting teaching methods to multicultural learning environments.<br />Designed and implemented
+                structured curricula covering web design fundamentals, UI/UX basics, and introductory front-end
+                concepts.<br />Guided students through hands-on projects, supporting the development of personal
+                websites and digital portfolios.<br />Provided individualized feedback to support skill progression and
+                build students' confidence in presenting their work in English.</div>
+            </div>
+            <div
+              style="align-self: stretch; padding-top: 20px; border-top: 0.50px #383838 solid; justify-content: flex-start; align-items: flex-start; gap: 30px; display: inline-flex; flex-wrap: wrap; align-content: flex-start">
+              <div
+                style="min-width: 220px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 12px; display: inline-flex">
+                <div
+                  style="align-self: stretch; color: white; font-size: 16px; font-family: Schibsted Grotesk; font-weight: 600; line-height: 20.80px; word-wrap: break-word">
+                  Trial lesson teacher</div>
+                <div
+                  style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 2px; display: flex">
+                  <div
+                    style="align-self: stretch; color: #ABABAB; font-size: 16px; font-family: Schibsted Grotesk; font-weight: 400; text-decoration: none; line-height: 22.40px; word-wrap: break-word">
+                    Skyeng</div>
+                  <div
+                    style="align-self: stretch; color: #ABABAB; font-size: 16px; font-family: Schibsted Grotesk; font-weight: 400; line-height: 22.40px; word-wrap: break-word">
+                    June 2020 - June 2021</div>
+                  <div
+                    style="align-self: stretch; color: #ABABAB; font-size: 16px; font-family: Schibsted Grotesk; font-weight: 400; line-height: 22.40px; word-wrap: break-word">
+                    Moscow, Russia</div>
+                </div>
+              </div>
+              <div
+                style="min-width: 300px; color: white; font-size: 16px; font-family: Schibsted Grotesk; font-weight: 400; line-height: 24.80px; word-wrap: break-word">
+                Conducted diagnostic trial lessons to assess students' language proficiency, learning goals, and
+                motivation, creating a clear pathway for their academic progress.<br />Identified individual learning
+                needs and recommended personalized study plans aligned with students' professional, academic, or
+                personal objectives.<br />Delivered engaging, structured demo lessons that showcased teaching
+                methodology and platform tools, increasing student conversion and enrollment rates.</div>
+            </div>
+          </div>
+        </div>
+        <div
+          style="align-self: stretch; padding-top: 30px; padding-bottom: 80px; border-top: 1px #383838 solid; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 40px; display: flex">
+          <div
+            style="align-self: stretch; min-width: 220px; color: white; font-size: 12px; font-family: Schibsted Grotesk; font-weight: 600; line-height: 15.60px; word-wrap: break-word">
+            Skills</div>
+          <div
+            style="align-self: stretch; justify-content: flex-start; align-items: flex-start; gap: 37px; display: inline-flex; flex-wrap: wrap; align-content: flex-start">
+            <div
+              style="flex: 1 1 0; flex-direction: column; justify-content: center; align-items: flex-start; gap: 48px; display: inline-flex">
+              <div style="align-self: stretch"><span
+                  style="color: #ABABAB; font-size: 15px; font-family: Schibsted Grotesk; font-weight: 400; line-height: 19.50px; word-wrap: break-word">Fluency
+                  & Language Mastery<br /><br /></span><span
+                  style="color: white; font-size: 15px; font-family: Schibsted Grotesk; font-weight: 400; line-height: 19.50px; word-wrap: break-word">General
+                  English (A1-C1)<br />Speaking & Fluency Development<br />Vocabulary Expansion & Lexical Resource
+                  Building<br />Cambridge CELTA Methodology</span></div>
+              <div style="align-self: stretch"><span
+                  style="color: #ABABAB; font-size: 15px; font-family: Schibsted Grotesk; font-weight: 400; line-height: 19.50px; word-wrap: break-word">Career
+                  & Professional Communication<br /><br /></span><span
+                  style="color: white; font-size: 15px; font-family: Schibsted Grotesk; font-weight: 400; line-height: 19.50px; word-wrap: break-word">Job
+                  Interview Preparation (HR & Technical)<br />Business English & Workplace Communication<br />Mock
+                  Interviews & Real-Life Simulation Practice<br />Confidence Building & Pronunciation Coaching</span>
+              </div>
+            </div>
+            <div style="flex: 1 1 0; min-width: 300px"><span
+                style="color: #ABABAB; font-size: 15px; font-family: Schibsted Grotesk; font-weight: 400; line-height: 19.50px; word-wrap: break-word">Exam
+                Excellence & Score Strategy<br /><br /></span><span
+                style="color: white; font-size: 15px; font-family: Schibsted Grotesk; font-weight: 400; line-height: 19.50px; word-wrap: break-word">IELTS
+                Academic & General Training Preparation<br />Exam Strategy <br />Performance Assessment<br />Error
+                Analysis & Personalized Feedback</span></div>
+          </div>
+        </div>
+        <div
+          style="align-self: stretch; padding-top: 30px; padding-bottom: 80px; border-top: 1px #383838 solid; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 40px; display: flex">
+          <div
+            style="align-self: stretch; min-width: 220px; color: white; font-size: 12px; font-family: Schibsted Grotesk; font-weight: 600; line-height: 15.60px; word-wrap: break-word">
+            Reviews</div>
+          <div
+            style="align-self: stretch; justify-content: flex-start; align-items: flex-start; gap: 37px; display: inline-flex; flex-wrap: wrap; align-content: flex-start">
+            <div
+              style="flex-direction: column; justify-content: center; align-items: flex-start; gap: 48px; display: inline-flex">
+              <div style="align-self: stretch"><span
+                  style="color: #ABABAB; font-size: 15px; font-family: Schibsted Grotesk; font-weight: 400; line-height: 19.50px; word-wrap: break-word">Ann<br /><br /></span><span
+                  style="color: white; font-size: 15px; font-family: Schibsted Grotesk; font-weight: 400; line-height: 19.50px; word-wrap: break-word">I
+                  came with a rather ambitious goal - to prepare for a language exam in a short period of time.
+                  Karina is a wonderful teacher: attentive and supportive, yet demanding and appropriately strict. In
+                  our lessons, we manage to cover several areas - speaking, grammar, reading, and listening. I would
+                  especially like to highlight the way the material is presented - engaging presentations with
+                  up-to-date vocabulary and excellent texts.
+                  Karina is the kind of teacher who not only helps you overcome the language barrier, but also pays
+                  great attention to phonetics and the overall quality of speech.
+                  I highly recommend this specialist! I'm sure that with her, you can pass any exam without fear or
+                  doubt in your knowledge.</span></div>
+              <div style="align-self: stretch"><span
+                  style="color: #ABABAB; font-size: 15px; font-family: Schibsted Grotesk; font-weight: 400; line-height: 19.50px; word-wrap: break-word">Liz<br /><br /></span><span
+                  style="color: white; font-size: 15px; font-family: Schibsted Grotesk; font-weight: 400; line-height: 19.50px; word-wrap: break-word">The
+                  best teacher!
+                  She always explains every topic thoroughly and answers all questions in detail - so there are no
+                  questions left afterward
+                  I'm rapidly approaching the B1 level!
+                  Karina is a very kind, polite, intelligent, and calm teacher. Thank you!</span></div>
+            </div>
+            <div style="min-width: 300px"><span
+                style="color: #ABABAB; font-size: 15px; font-family: Schibsted Grotesk; font-weight: 400; line-height: 19.50px; word-wrap: break-word">Masha<br /><br /></span><span
+                style="color: white; font-size: 15px; font-family: Schibsted Grotesk; font-weight: 400; line-height: 19.50px; word-wrap: break-word">We've
+                only been studying together for about three weeks, but I can already feel huge progress. Even my close
+                ones say they can see the difference and wonder how I ever managed without these lessons before.
+                Long story short - I'm absolutely thrilled. 10/10 for comfort, quality, and lesson structure. AWESOME.
+                Karina, thank you!</span></div>
+          </div>
+        </div>
+        <div
+          style="align-self: stretch; padding-top: 30px; padding-bottom: 80px; border-top: 1px #383838 solid; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 37px; display: flex">
+          <div
+            style="align-self: stretch; color: white; font-size: 12px; font-family: Schibsted Grotesk; font-weight: 600; line-height: 15.60px; word-wrap: break-word">
+            Education</div>
+          <div
+            style="align-self: stretch; justify-content: flex-start; align-items: flex-start; gap: 37px; display: inline-flex">
+            <div
+              style="flex: 1 1 0; color: white; font-size: 16px; font-family: Schibsted Grotesk; font-weight: 400; line-height: 22.40px; word-wrap: break-word">
+              Minsk State Linguistic University (MSLU)</div>
+            <div style="flex: 1 1 0; align-self: stretch"><span
+                style="color: white; font-size: 16px; font-family: Schibsted Grotesk; font-weight: 400; line-height: 22.40px; word-wrap: break-word">Bachelor
+                (BA) in Linguistics / Teaching English<br /></div>
+          </div>
+          <div
+            style="align-self: stretch; justify-content: flex-start; align-items: flex-start; gap: 37px; display: inline-flex">
+            <div
+              style="flex: 1 1 0; color: white; font-size: 16px; font-family: Schibsted Grotesk; font-weight: 400; line-height: 22.40px; word-wrap: break-word">
+              Oxford House (Amsterdam, the Netherlands)</div>
+            <div
+              style="flex: 1 1 0; align-self: stretch; color: white; font-size: 16px; font-family: Schibsted Grotesk; font-weight: 400; line-height: 22.40px; word-wrap: break-word">
+              IELTS Academic C1</div>
+          </div>
+        </div>
+        <div
+          style="align-self: stretch; padding-bottom: 80px; justify-content: flex-start; align-items: flex-start; gap: 37px; display: inline-flex">
+          <div
+            style="padding-top: 16px; border-top: 0.50px #383838 solid; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 37px; display: inline-flex">
+            <div
+              style="align-self: stretch; color: white; font-size: 12px; font-family: Schibsted Grotesk; font-weight: 600; line-height: 15.60px; word-wrap: break-word">
+              Recommendations:</div>
+            <div style="align-self: stretch"><span
+                style="color: white; font-size: 16px; font-family: Schibsted Grotesk; font-weight: 400; line-height: 22.40px; word-wrap: break-word">"Karina
+                effectively elicited pronunciation and linked lesson stages smoothly, ensuring clear structure and
+                logical progression.<br />Showed strong awareness of communicative teaching techniques, incorporating
+                concept-checking questions and interactive tasks to support understanding.<br />Lesson structure and
+                language analysis reflected solid methodological understanding and professional
+                planning.."<br /></span><span
+                style="color: #ABABAB; font-size: 16px; font-family: Schibsted Grotesk; font-weight: 400; line-height: 22.40px; word-wrap: break-word">Assessor,
+                Tom Hewson, Cambridge Reagional colledge</span></div>
+            <div style="align-self: stretch"><span
+                style="color: white; font-size: 16px; font-family: Schibsted Grotesk; font-weight: 400; line-height: 22.40px; word-wrap: break-word">"Karina's
+                lesson was well-personalized, with high student engagement and active discussion throughout. Encouraged
+                student participation and discussion, with thoughtful use of breakout rooms to maximize speaking
+                opportunities.<br />The PPT effectively reflected the lesson framework, with all key stages clearly
+                structured and delivered.."<br /></span><span
+                style="color: #ABABAB; font-size: 16px; font-family: Schibsted Grotesk; font-weight: 400; line-height: 22.40px; word-wrap: break-word">Assessor,
+                Elena Pushkareva, Cambridge Reagional colledge</span></div>
+            <div
+              style="padding-top: 16px; border-top: 0.50px #383838 solid; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 37px; display: inline-flex">
+              <div
+                style="align-self: stretch; color: white; font-size: 12px; font-family: Schibsted Grotesk; font-weight: 600; line-height: 15.60px; word-wrap: break-word">
+                Certifications:</div>
+              <div
+                style="align-self: stretch; color: white; font-size: 16px; font-family: Schibsted Grotesk; font-weight: 400; line-height: 22.40px; word-wrap: break-word">
+                CELTA Pass B, Cambridge Regional Colledge</div>
+            </div>
+          </div>
+        </div>
+        <div
+          style="align-self: stretch; height: 400px; padding-top: 20px; padding-bottom: 20px; border-top: 0.50px #383838 solid; justify-content: space-between; align-items: flex-end; display: inline-flex">
+          <a href="https://www.avito.ru/sankt-peterburg/predlozheniya_uslug/repetitor_po_angliyskomu_yazyku_onlayn_ielts_4355532025"
+            target="_blank"
+            style="color: white; font-size: 24px; font-family: 'Schibsted Grotesk'; font-weight: 600; text-decoration: underline; line-height: 31.20px; display: inline-block;">
+            Contact me
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
