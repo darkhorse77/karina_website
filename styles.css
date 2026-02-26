@@ -1,0 +1,570 @@
+/* --- Root & Reset --- */
+:root {
+  --bg-color: #000000;
+  --card-bg: #000000;
+  --text-main: #e6edf3;
+  --text-muted: #ababab;
+  --border: #383838;
+  --accent: #ffffff;
+  --accent-hover: #f5f5f5;
+}
+
+.hero-contacts-dropdown {
+  display: none;
+}
+
+.hero-contacts-toggle {
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: #000000;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hero-contacts-toggle-icon {
+  font-size: 12px;
+  transition: all 0.2s;
+}
+
+.hero-contacts-toggle.active {
+  background-color: var(--text-main);
+  border-color: var(--border);
+  color: var(--card-bg);
+}
+
+.hero-contacts-toggle.active .hero-contacts-toggle-icon {
+  transform: rotate(180deg);
+}
+
+.hero-contacts-menu {
+  padding-top: 6px;
+  display: grid;
+  height: 0;
+  transition: height 0.5s;
+  overflow: hidden;
+}
+
+.contact-link {
+  overflow: hidden;
+}
+
+.contact-link {
+  display: block;
+}
+
+.hero-contacts-toggle.active ~ .hero-contacts-menu {
+  height: 160px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family:
+    "Schibsted Grotesk",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  line-height: 1.6;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* --- Layout --- */
+.container {
+  width: 100%;
+  max-width: 1100px;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.main-layout {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.sidebar {
+  flex: 1 1 0;
+  padding-right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.content-column {
+  flex: 1 1 0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* --- Hero --- */
+.hero-header {
+  width: 100%;
+  padding-bottom: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.hero-title {
+  width: 373px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hero-name {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 31.2px;
+  word-wrap: break-word;
+}
+
+.hero-role {
+  color: var(--text-muted);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 31.2px;
+  word-wrap: break-word;
+}
+
+.hero-cta-link {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 31.2px;
+  text-decoration: underline;
+  display: inline-block;
+}
+
+.hero-cta-link:hover {
+  color: var(--accent-hover);
+}
+
+/* --- Bio --- */
+.bio-section {
+  width: 100%;
+  padding: 30px 40px 40px 6px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 37px;
+}
+
+.bio-text {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22.4px;
+  word-wrap: break-word;
+}
+
+/* --- Contact Links --- */
+.contact-links {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-link {
+  text-decoration: none;
+  display: inline-block;
+  width: 358px;
+}
+
+.contact-link-inner {
+  width: 100%;
+  padding: 12px 6px;
+  background: #000000;
+  border-top: 0.5px solid var(--border);
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+  transition: all 0.3s ease;
+}
+
+.contact-link-text {
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 15.6px;
+  font-family: "Schibsted Grotesk", sans-serif;
+}
+
+.contact-link-icon {
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 12.83px;
+  font-family: "Schibsted Grotesk", sans-serif;
+  display: flex;
+}
+
+.contact-link:hover .contact-link-inner {
+  background: #ffffff;
+}
+
+.contact-link:hover .contact-link-text,
+.contact-link:hover .contact-link-icon {
+  color: #000000;
+}
+
+/* --- Generic Section Block --- */
+.section {
+  width: 100%;
+  padding-top: 30px;
+  padding-bottom: 80px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 37px;
+}
+
+.section--reviews {
+  gap: 40px;
+}
+
+.section-title {
+  min-width: 220px;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15.6px;
+  font-family: "Schibsted Grotesk", sans-serif;
+  word-wrap: break-word;
+}
+
+/* --- Experience --- */
+.experience-list {
+  width: 100%;
+  padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.experience-row {
+  width: 100%;
+  padding-top: 20px;
+  border-top: 0.5px solid var(--border);
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+.experience-meta {
+  min-width: 220px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.experience-role {
+  align-self: stretch;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 19.5px;
+}
+
+.experience-details {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.experience-company,
+.experience-period,
+.experience-location {
+  color: var(--text-muted);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22.4px;
+}
+
+.experience-description {
+  min-width: 300px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24.8px;
+}
+
+/* --- Skills --- */
+.skills-content {
+  width: 100%;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 37px;
+}
+
+.skills-column {
+  flex: 1 1 0;
+  min-width: 260px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 48px;
+}
+
+.skills-block {
+  align-self: stretch;
+}
+
+.skills-label {
+  color: var(--text-muted);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 19.5px;
+}
+
+.skills-text {
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 19.5px;
+}
+
+/* --- Reviews --- */
+.reviews-columns {
+  width: 100%;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 37px;
+}
+
+.reviews-left {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 48px;
+}
+
+.review-block {
+  align-self: stretch;
+}
+
+.review-author {
+  color: var(--text-muted);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 19.5px;
+}
+
+.review-text {
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 19.5px;
+}
+
+.reviews-right {
+  min-width: 300px;
+}
+
+/* --- Education --- */
+.education-rows {
+  width: 100%;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.education-row {
+  width: 100%;
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 37px;
+}
+
+.education-institution {
+  flex: 1 1 0;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22.4px;
+}
+
+.education-detail {
+  flex: 1 1 0;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22.4px;
+}
+
+.education-detail-muted {
+  color: var(--text-muted);
+}
+
+/* --- Recommendations & Certifications --- */
+.recommendations-wrapper {
+  width: 100%;
+  padding-top: 16px;
+  border-top: 0.5px solid var(--border);
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 37px;
+}
+
+.recommendation-text {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22.4px;
+}
+
+.recommendation-author {
+  color: var(--text-muted);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22.4px;
+}
+
+.certifications-title {
+  align-self: stretch;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15.6px;
+}
+
+.certifications-text {
+  align-self: stretch;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22.4px;
+}
+
+/* --- Footer CTA --- */
+.footer-cta {
+  width: 100%;
+  height: 400px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-top: 0.5px solid var(--border);
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.footer-cta-link {
+  text-decoration: underline;
+}
+
+/* .hero-contacts-menu {
+  position: absolute;
+  right: 0;
+  margin-top: 8px;
+  padding: 8px;
+  background: #000000;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 10;
+} */
+
+/* .hero-contacts-dropdown.open .hero-contacts-menu {
+  display: flex;
+} */
+
+/* --- Mobile --- */
+@media (max-width: 768px) {
+  .main-layout {
+    flex-direction: column;
+  }
+
+  .hero-header {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .hero-title {
+    width: 100%;
+  }
+
+  .hero-cta-link {
+    font-size: 20px;
+  }
+
+  .content-column {
+    padding-left: 0;
+  }
+
+  .experience-row,
+  .education-row {
+    flex-direction: column;
+  }
+
+  .footer-cta {
+    height: auto;
+  }
+
+  .sidebar .contact-links {
+    display: none;
+  }
+
+  .hero-contacts-dropdown {
+    display: block;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .contact-link {
+    width: calc(100vw - 40px);
+  }
+}
