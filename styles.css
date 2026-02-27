@@ -8,7 +8,7 @@
   --accent: #ffffff;
   --accent-hover: #f5f5f5;
 }
-
+/* 
 .hero-contacts-dropdown {
   display: none;
 }
@@ -56,11 +56,11 @@
 
 .contact-link {
   display: block;
-}
-
+} */
+/* 
 .hero-contacts-toggle.active ~ .hero-contacts-menu {
   height: 160px;
-}
+} */
 
 * {
   box-sizing: border-box;
@@ -551,9 +551,9 @@ body {
     height: auto;
   }
 
-  .sidebar .contact-links {
+  /* .sidebar .contact-links {
     display: none;
-  }
+  } */
 
   .hero-contacts-dropdown {
     display: block;
